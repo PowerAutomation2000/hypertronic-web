@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hypertronic | Infrastructure, Data Center & Automation</title>
+  <meta
+    name="description"
+    content="Hypertronic delivers infrastructure services, data center operations, deployment support, networking and automation solutions."
+  />
+  <link rel="icon" href="assets/logo-core.svg" type="image/svg+xml" />
+
+  <style>
+    :root{
+      --bg:#e9eef5;
+      --surface:#ffffff;
+      --surface-soft:#f8fbff;
+      --surface-muted:#eef4fa;
+      --text:#0f172a;
+      --muted:#64748b;
+      --line:#dbe4ee;
+      --primary:#2563eb;
+      --primary-dark:#1d4ed8;
+      --primary-soft:#dbeafe;
+      --navy:#0b1220;
+      --navy-2:#0f172a;
+      --navy-3:#162033;
+      --success:#16a34a;
+      --shadow-lg:0 18px 50px rgba(15,23,42,.12);
+      --shadow-md:0 10px 28px rgba(15,23,42,.08);
+      --radius-xl:28px;
+      --radius-lg:20px;
+      --radius-md:16px;
+      --max:1240px;
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      font-family:Arial,sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(37,99,235,.06), transparent 26%),
+        linear-gradient(180deg, #edf2f8 0%, #e8edf5 100%);
+      color:var(--text);
+      line-height:1.55;
+    }
+
+    a{text-decoration:none;color:inherit}
+    img{display:block;max-width:100%}
+
+    .container{
+      width:min(calc(100% - 32px), var(--max));
+      margin:auto;
+    }
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter:blur(10px);
+      background:rgba(233,238,245,.78);
+      border-bottom:1px solid rgba(15,23,42,.06);
+    }
+
+    .nav{
+      min-height:78px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+    }
+
+    .brand img{
+      width:42px;
+      height:42px;
+      filter:drop-shadow(0 0 8px rgba(37,99,235,.35));
+    }
+
+    .brand-copy{
+      display:flex;
+      flex-direction:column;
+      line-height:1.05;
+    }
+
+    .brand-copy strong{
+      font-size:1.05rem;
+      letter-spacing:.08em;
+      font-weight:800;
+    }
+
+    .brand-copy span{
+      font-size:.72rem;
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.12em;
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:22px;
+      flex-wrap:wrap;
+    }
+
+    .nav-links a{
+      font-size:.96rem;
+      color:#334155;
+      font-weight:700;
+    }
+
+    .nav-links a:hover{color:var(--primary)}
+
+    .nav-cta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:44px;
+      padding:0 16px;
+      border-radius:999px;
+      background:var(--primary);
+      color:#fff;
+      font-weight:800;
+      box-shadow:0 12px 24px rgba(37,99,235,.22);
+    }
+
+    .nav-cta:hover{background:var(--primary-dark)}
+
+    .hero-wrap{
+      padding:22px 0 0;
+    }
+
+    .hero{
+      position:relative;
+      overflow:hidden;
+      min-height:680px;
+      border-radius:32px;
+      box-shadow:var(--shadow-lg);
+      background:
+        linear-gradient(90deg, rgba(2,6,23,.93) 0%, rgba(15,23,42,.86) 46%, rgba(15,23,42,.55) 100%),
+        url('https://assets.ibm.com/is/image/ibm/22_27_p_gorodenkoff-549?dpr=on%2C2&wid=1584&hei=891');
+      background-size:cover;
+      background-position:center;
+      color:#fff;
+      isolation:isolate;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.03), transparent 24%),
+        radial-gradient(circle at 82% 18%, rgba(37,99,235,.22), transparent 20%),
+        radial-gradient(circle at 82% 70%, rgba(96,165,250,.12), transparent 26%);
+      z-index:0;
+      pointer-events:none;
+    }
+
+    .hero-grid{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns:1fr 1fr; /* Centrado: columnas iguales */
+      gap:40px;
+      align-items:center; /* Centrado vertical */
+      min-height:680px;
+      padding:54px;
+    }
+
+    .hero-copy{
+      max-width:100%;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      min-height:32px;
+      padding:0 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.14);
+      font-size:12px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      margin-bottom:20px;
+    }
+
+    .hero h1{
+      font-size:clamp(2.7rem, 4.5vw, 4.5rem);
+      line-height:.95;
+      letter-spacing:-.045em;
+      font-weight:900;
+      max-width:900px;
+    }
+
+    .hero p{
+      margin-top:18px;
+      max-width:680px;
+      color:rgba(255,255,255,.88);
+      font-size:1.08rem;
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-top:28px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:50px;
+      padding:0 20px;
+      border-radius:999px;
+      font-weight:800;
+      transition:.18s ease;
+    }
+
+    .btn-primary{
+      background:var(--primary);
+      color:#fff;
+      box-shadow:0 16px 32px rgba(37,99,235,.24);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-1px);
+      background:var(--primary-dark);
+    }
+
+    .btn-secondary{
+      color:#fff;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.06);
+    }
+
+    .btn-secondary:hover{
+      background:rgba(255,255,255,.11);
+      transform:translateY(-1px);
+    }
+
+    .hero-panel{
+      justify-self:end;
+      width:min(100%, 410px);
+      background:rgba(255,255,255,.08);
+      border:1px solid rgba(255,255,255,.11);
+      border-radius:24px;
+      padding:20px;
+      backdrop-filter:blur(10px);
+      box-shadow:0 12px 30px rgba(2,6,23,.16);
+    }
+
+    .hero-panel h3{
+      font-size:.82rem;
+      text-transform:uppercase;
+      letter-spacing:.1em;
+      color:rgba(255,255,255,.68);
+      margin-bottom:10px;
+    }
+
+    .hero-panel .headline{
+      font-size:1.85rem;
+      line-height:1.02;
+      font-weight:900;
+      margin-bottom:10px;
+    }
+
+    .hero-panel p{
+      color:rgba(255,255,255,.82);
+      font-size:.95rem;
+    }
+
+    .hero-metrics{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .metric{
+      background:rgba(255,255,255,.07);
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:16px;
+      padding:14px;
+    }
+
+    .metric strong{
+      display:block;
+      font-size:1.04rem;
+      margin-bottom:4px;
+    }
+
+    .metric span{
+      font-size:.82rem;
+      color:rgba(255,255,255,.72);
+    }
+
+    main{
+      padding:28px 0 70px;
+    }
+
+    .section{
+      margin-top:22px;
+    }
+
+    .section-shell{
+      background:var(--surface);
+      border:1px solid rgba(219,228,238,.85);
+      border-radius:var(--radius-xl);
+      box-shadow:var(--shadow-md);
+      overflow:hidden;
+    }
+
+    .section-top{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:20px;
+      padding:30px 30px 0;
+    }
+
+    .section-heading{
+      max-width:760px;
+    }
+
+    .section-kicker{
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.09em;
+      color:var(--muted);
+      font-weight:800;
+      margin-bottom:8px;
+    }
+
+    .section h2{
+      font-size:clamp(1.9rem, 2vw, 2.7rem);
+      line-height:1.04;
+      letter-spacing:-.03em;
+    }
+
+    .section-top p{
+      max-width:700px;
+      color:var(--muted);
+      margin-top:8px;
+    }
+
+    .section-body{
+      padding:24px 30px 30px;
+    }
+
+    .section-dark{
+      background:
+        linear-gradient(180deg, rgba(8,15,30,.98) 0%, rgba(14,23,42,.98) 100%);
+      color:#fff;
+      border:none;
+    }
+
+    .section-dark .section-kicker{color:rgba(255,255,255,.62)}
+    .section-dark .section-top p{color:rgba(255,255,255,.74)}
+
+    .grid{
+      display:grid;
+      gap:16px;
+    }
+
+    .grid-4{grid-template-columns:repeat(4, 1fr)}
+    .grid-3{grid-template-columns:repeat(3, 1fr)}
+    .grid-2{grid-template-columns:repeat(2, 1fr)}
+
+    .card{
+      background:linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:22px;
+      box-shadow:0 8px 22px rgba(15,23,42,.05);
+      transition:.18s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-3px);
+      box-shadow:0 16px 32px rgba(15,23,42,.08);
+    }
+
+    .section-dark .card{
+      background:linear-gradient(180deg, rgba(255,255,255,.08) 0%, rgba(255,255,255,.05) 100%);
+      border:1px solid rgba(255,255,255,.08);
+      color:#fff;
+      box-shadow:none;
+    }
+
+    .section-dark .card p,
+    .section-dark .card small{
+      color:rgba(255,255,255,.74);
+    }
+
+    .card-icon{
+      width:46px;
+      height:46px;
+      border-radius:14px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background:var(--primary-soft);
+      color:var(--primary-dark);
+      font-size:1.05rem;
+      font-weight:900;
+      margin-bottom:14px;
+    }
+
+    .section-dark .card-icon{
+      background:rgba(37,99,235,.18);
+      color:#93c5fd;
+    }
+
+    .card h3{
+      font-size:1.1rem;
+      line-height:1.15;
+      margin-bottom:8px;
+    }
+
+    .card p{
+      color:#475569;
+      font-size:.97rem;
+    }
+
+    .card small{
+      display:block;
+      margin-top:12px;
+      color:var(--primary-dark);
+      font-weight:700;
+      font-size:.88rem;
+    }
+
+    .split{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+
+    .list{
+      list-style:none;
+      display:grid;
+      gap:12px;
+    }
+
+    .list li{
+      padding:14px 16px;
+      border-radius:16px;
+      background:var(--surface-muted);
+      border:1px solid var(--line);
+      color:#334155;
+      font-weight:700;
+    }
+
+    .feature-panel{
+      background:linear-gradient(180deg, #eff6ff 0%, #ffffff 100%);
+      border-left:6px solid var(--primary);
+    }
+
+    .feature-panel p{color:#475569}
+
+    .clients-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:16px;
+    }
+
+    .client-card{
+      display:grid;
+      grid-template-columns:220px 1fr auto;
+      gap:20px;
+      align-items:center;
+      background:linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+      border:1px solid var(--line);
+      border-radius:22px;
+      padding:22px;
+      box-shadow:0 8px 22px rgba(15,23,42,.05);
+    }
+
+    .client-logo-box{
+      min-height:120px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:18px;
+      background:#0b1220;
+      padding:18px;
+    }
+
+    .client-logo-box img{
+      max-width:100%;
+      max-height:90px;
+      object-fit:contain;
+    }
+
+    .client-copy h3{
+      font-size:1.18rem;
+      margin-bottom:8px;
+    }
+
+    .client-copy p{
+      color:#475569;
+    }
+
+    .client-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      margin-top:14px;
+    }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      min-height:30px;
+      padding:0 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:800;
+    }
+
+    .tag-blue{background:#dbeafe;color:#1d4ed8}
+    .tag-slate{background:#e5e7eb;color:#374151}
+    .tag-amber{background:#fef3c7;color:#92400e}
+
+    .client-cta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:44px;
+      padding:0 16px;
+      border-radius:999px;
+      background:var(--primary);
+      color:#fff;
+      font-weight:800;
+      white-space:nowrap;
+      box-shadow:0 12px 24px rgba(37,99,235,.18);
+    }
+
+    .client-cta:hover{
+      background:var(--primary-dark);
+    }
+
+    .contact-box{
+      display:grid;
+      grid-template-columns:1.05fr .95fr;
+      gap:16px;
+    }
+
+    .contact-card{
+      border-radius:22px;
+      padding:26px;
+    }
+
+    .contact-dark{
+      background:
+        linear-gradient(180deg, rgba(2,6,23,.94) 0%, rgba(15,23,42,.94) 100%),
+        url('https://assets.ibm.com/is/image/ibm/22_27_p_gorodenkoff-549?dpr=on%2C2&wid=1584&hei=891');
+      background-size:cover;
+      background-position:center;
+      color:#fff;
+    }
+
+    .contact-dark p{color:rgba(255,255,255,.82)}
+
+    .contact-points{
+      list-style:none;
+      display:grid;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .contact-points li{
+      padding:14px 16px;
+      border-radius:16px;
+      background:rgba(255,255,255,.07);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .contact-form{
+      background:#fff;
+      border:1px solid var(--line);
+    }
+
+    .contact-form form{
+      display:grid;
+      gap:14px;
+    }
+
+    .contact-form label{
+      display:grid;
+      gap:8px;
+      font-size:.92rem;
+      font-weight:700;
+      color:#334155;
+    }
+
+    .contact-form input,
+    .contact-form textarea{
+      width:100%;
+      border:1px solid #dbe1ea;
+      border-radius:14px;
+      padding:14px 16px;
+      font:inherit;
+      color:var(--text);
+      background:#fff;
+      outline:none;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus{
+      border-color:var(--primary);
+      box-shadow:0 0 0 4px rgba(37,99,235,.12);
+    }
+
+    .contact-form textarea{
+      min-height:150px;
+      resize:vertical;
+    }
+
+    .wa-link{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color:#86efac;
+      font-weight:800;
+    }
+
+    .wa-link:hover{color:#bbf7d0}
+
+    .wa-icon{
+      width:18px;
+      height:18px;
+      flex:0 0 18px;
+    }
+
+    footer{
+      padding:26px 0 40px;
+    }
+
+    .footer-bar{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      color:var(--muted);
+      font-size:.92rem;
+      border-top:1px solid rgba(148,163,184,.22);
+      padding-top:18px;
+    }
+
+    .whatsapp-float{
+      position:fixed;
+      right:20px;
+      bottom:20px;
+      z-index:120;
+      width:62px;
+      height:62px;
+      border-radius:50%;
+      background:#25D366;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      box-shadow:0 16px 30px rgba(0,0,0,.22);
+      transition:.18s ease;
+    }
+
+    .whatsapp-float:hover{
+      transform:translateY(-2px) scale(1.03);
+    }
+
+    .whatsapp-float svg{
+      width:28px;
+      height:28px;
+    }
+
+    @media (max-width: 1180px){
+      .hero-grid{
+        grid-template-columns:1fr;
+        align-items:start;
+        justify-items: center;
+        text-align: center;
+      }
+
+      .hero-copy{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .hero-panel{
+        justify-self:center;
+      }
+
+      .client-card{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width: 860px){
+      .grid-4,
+      .grid-3,
+      .grid-2,
+      .split,
+      .contact-box{
+        grid-template-columns:1fr;
+      }
+
+      .nav{
+        flex-wrap:wrap;
+        justify-content:center;
+        padding:14px 0;
+      }
+
+      .nav-links{
+        justify-content:center;
+      }
+
+      .hero{
+        min-height:auto;
+      }
+
+      .hero-grid{
+        min-height:auto;
+        padding:30px 22px;
+      }
+
+      .section-top,
+      .footer-bar{
+        flex-direction:column;
+        align-items:start;
+      }
+
+      .section-top,
+      .section-body{
+        padding-left:22px;
+        padding-right:22px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#top" class="brand">
+        <img src="assets/logo-core.svg" alt="Hypertronic logo">
+        <div class="brand-copy">
+          <strong>HYPERTRONIC</strong>
+          <span>Infrastructure • Data Center • Automation</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#work">Recent Work</a>
+        <a href="#clients">Clients</a>
+        <a href="#intelligence">Energy Intelligence</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a href="#contact" class="nav-cta">Start a Project</a>
+    </div>
+  </header>
+
+  <div class="hero-wrap" id="top">
+    <div class="container">
+      <section class="hero">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">Field Engineering • Deployment • Automation</div>
+            <h1>We build and operate critical infrastructure.</h1>
+            <p>
+              Hypertronic delivers technical execution for data center operations,
+              networking, rack deployment, field support and automation-driven workflows
+              for modern IT environments.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#contact" class="btn btn-primary">Talk to Hypertronic</a>
+              <a href="#services" class="btn btn-secondary">Explore Services</a>
+            </div>
+          </div>
+
+          <aside class="hero-panel">
+            <h3>Operational Focus</h3>
+            <div class="headline">Infrastructure that executes.</div>
+            <p>
+              Designed for serious technical operations: on-site work, data center support,
+              structured deployments and automation-led workflows.
+            </p>
+
+            <div class="hero-metrics">
+              <div class="metric">
+                <strong>DC Ops</strong>
+                <span>Rack, power, cabling, field execution</span>
+              </div>
+              <div class="metric">
+                <strong>Networking</strong>
+                <span>Fiber, copper, optics, validation</span>
+              </div>
+              <div class="metric">
+                <strong>Automation</strong>
+                <span>Workflow orchestration and integration</span>
+              </div>
+              <div class="metric">
+                <strong>Response</strong>
+                <span>Fast hands, clean reporting, real coordination</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <main>
+    <div class="container">
+
+      <section class="section" id="services">
+        <div class="section-shell">
+          <div class="section-top">
+            <div class="section-heading">
+              <div class="section-kicker">Services</div>
+              <h2>Technical execution for real infrastructure.</h2>
+              <p>
+                Not generic IT support. Hypertronic focuses on field-ready delivery across infrastructure,
+                data center tasks, deployment and automation.
+              </p>
+            </div>
+          </div>
+
+          <div class="section-body">
+            <div class="grid grid-4">
+              <article class="card">
+                <div class="card-icon">DC</div>
+                <h3>Data Center Field Services</h3>
+                <p>
+                  Rack and stack, smart hands support, device replacement, labeling,
+                  inventory and on-site execution.
+                </p>
+              </article>
+
+              <article class="card">
+                <div class="card-icon">NW</div>
+                <h3>Networking & Connectivity</h3>
+                <p>
+                  Fiber and copper validation, optics handling, patching,
+                  physical troubleshooting and link verification.
+                </p>
+              </article>
+
+              <article class="card">
+                <div class="card-icon">IT</div>
+                <h3>Infrastructure Deployment</h3>
+                <p>
+                  Controlled rollout of servers, switches, racks, accessories
+                  and structured technical implementation.
+                </p>
+              </article>
+
+              <article class="card">
+                <div class="card-icon">AI</div>
+                <h3>Automation & Workflow Engineering</h3>
+                <p>
+                  Process automation, integrations, event correlation and workflow design
+                  for more scalable operations.
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="work">
+        <div class="section-shell">
+          <div class="section-top">
+            <div class="section-heading">
+              <div class="section-kicker">Recent Work</div>
+              <h2>Execution that creates operational value.</h2>
+              <p>
+                Representative examples of the type of field work, recovery support
+                and remote coordination Hypertronic can deliver.
+              </p>
+            </div>
+          </div>
+
+          <div class="section-body">
+            <div class="grid grid-3">
+              <article class="card">
+                <div class="card-icon">01</div>
+                <h3>Data Center Deployment</h3>
+                <p>
+                  Server and switch installation including rack positioning,
+                  structured cabling and implementation support.
+                </p>
+                <small>Impact: Delivery completed without service disruption.</small>
+              </article>
+
+              <article class="card">
+                <div class="card-icon">02</div>
+                <h3>Connectivity Troubleshooting</h3>
+                <p>
+                  Physical layer validation, optics review and structured
+                  fault isolation for critical customer connectivity.
+                </p>
+                <small>Impact: Faster restoration and cleaner incident recovery.</small>
+              </article>
+
+              <article class="card">
+                <div class="card-icon">03</div>
+                <h3>Smart Hands Operations</h3>
+                <p>
+                  On-site execution, inventory validation and real-time
+                  coordination with remote technical teams.
+                </p>
+                <small>Impact: Better response time and stronger operational confidence.</small>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="clients">
+        <div class="section-shell">
+          <div class="section-top">
+            <div class="section-heading">
+              <div class="section-kicker">Trusted By</div>
+              <h2>First client already on the board.</h2>
+              <p>
+                Hypertronic is already supporting companies operating in real infrastructure environments.
+              </p>
+            </div>
+          </div>
+
+          <div class="section-body">
+            <div class="clients-grid">
+              <article class="client-card">
+                <div class="client-logo-box">
+                  <img src="assets/globalbytes-logo.png" alt="Global Bytes Technologies logo">
+                </div>
+
+                <div class="client-copy">
+                  <h3>Global Bytes Technologies</h3>
+                  <p>
+                    Network maintenance services company focused on critical infrastructure support,
+                    rapid field response and 24/7 service availability.
+                  </p>
+
+                  <div class="client-meta">
+                    <span class="tag tag-blue">24/7 Support</span>
+                    <span class="tag tag-slate">Critical Infrastructure</span>
+                    <span class="tag tag-amber">Rapid Response</span>
+                  </div>
+                </div>
+
+                <a class="client-cta" href="https://www.globalbytes.co" target="_blank" rel="noopener noreferrer">
+                  Visit Client
+                </a>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="intelligence">
+        <div class="section-shell section-dark">
+          <div class="section-top">
+            <div class="section-heading">
+              <div class="section-kicker">Energy Intelligence</div>
+              <h2>Infrastructure visibility beyond physical deployment.</h2>
+              <p>
+                Hypertronic is evolving toward data-driven operations, integrating monitoring,
+                automation and analysis to understand real power behavior and detect anomalies.
+              </p>
+            </div>
+          </div>
+
+          <div class="section-body">
+            <div class="grid grid-3">
+              <article class="card">
+                <div class="card-icon">MW</div>
+                <h3>Monitoring</h3>
+                <p>Rack-level energy tracking and visibility over infrastructure consumption.</p>
+              </article>
+
+              <article class="card">
+                <div class="card-icon">AN</div>
+                <h3>Anomaly Detection</h3>
+                <p>Detection of unusual operational changes and abnormal power behavior.</p>
+              </article>
+
+              <article class="card">
+                <div class="card-icon">WF</div>
+                <h3>Automation</h3>
+                <p>Correlation of events, reporting logic and workflow-driven operational analysis.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-shell">
+          <div class="section-body" style="padding-top:30px;">
+            <div class="split">
+              <article class="card feature-panel">
+                <div class="section-kicker">About Hypertronic</div>
+                <h2 style="font-size:2rem; margin-bottom:10px;">Engineering discipline applied to infrastructure.</h2>
+                <p>
+                  Hypertronic was created to deliver serious technical services with a practical engineering mindset.
+                  The focus is clear: infrastructure, field operations, networking, deployment support and automation
+                  that improves execution instead of adding noise.
+                </p>
+              </article>
+
+              <article class="card">
+                <div class="section-kicker">What defines the work</div>
+                <ul class="list">
+                  <li>Operational discipline under real-world constraints</li>
+                  <li>Strong alignment with data center and deployment environments</li>
+                  <li>Technical communication that stays clear and actionable</li>
+                  <li>Automation used to improve workflow, visibility and delivery</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="section-shell">
+          <div class="section-body" style="padding-top:30px;">
+            <div class="contact-box">
+              <article class="contact-card contact-dark">
+                <div class="section-kicker" style="color:rgba(255,255,255,.65);">Contact</div>
+                <h2 style="font-size:2.1rem; margin-bottom:10px;">Let’s discuss your next infrastructure project.</h2>
+                <p>
+                  Use this section to receive requests for deployment, field support,
+                  structured infrastructure work or automation initiatives.
+                </p>
+
+                <ul class="contact-points">
+                  <li><strong>Email:</strong> contact@hypertronic.pe</li>
+                  <li>
+                    <strong>WhatsApp:</strong>
+                    <a href="https://wa.me/51940162098" target="_blank" rel="noopener noreferrer" class="wa-link">
+                      <svg class="wa-icon" viewBox="0 0 32 32" aria-hidden="true">
+                        <path fill="currentColor" d="M19.11 17.29c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.13-.42-2.15-1.35-.8-.71-1.34-1.58-1.5-1.85-.16-.27-.02-.42.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.45-.61-.46h-.52c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.26s.98 2.62 1.11 2.8c.14.18 1.92 2.93 4.65 4.11.65.28 1.15.45 1.55.58.65.2 1.24.17 1.7.1.52-.08 1.6-.65 1.83-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32z"/>
+                        <path fill="currentColor" d="M16.03 3.2c-7.08 0-12.82 5.74-12.82 12.82 0 2.27.59 4.48 1.72 6.42L3 29l6.76-1.77a12.77 12.77 0 0 0 6.27 1.61h.01c7.07 0 12.81-5.75 12.81-12.82 0-3.43-1.34-6.66-3.77-9.08A12.73 12.73 0 0 0 16.03 3.2zm0 23.47h-.01a10.6 10.6 0 0 1-5.4-1.48l-.39-.23-4.01 1.05 1.07-3.91-.25-.4a10.64 10.64 0 1 1 8.99 4.97z"/>
+                      </svg>
+                      +51 940 162 098
+                    </a>
+                  </li>
+                  <li><strong>Coverage:</strong> Infrastructure, data center, networking, automation</li>
+                </ul>
+              </article>
+
+              <article class="contact-card contact-form">
+                <form>
+                  <label>
+                    Name
+                    <input type="text" name="name" placeholder="Your name">
+                  </label>
+
+                  <label>
+                    Company
+                    <input type="text" name="company" placeholder="Your company">
+                  </label>
+
+                  <label>
+                    Email
+                    <input type="email" name="email" placeholder="your@email.com">
+                  </label>
+
+                  <label>
+                    Project details
+                    <textarea name="message" placeholder="Tell us what you need."></textarea>
+                  </label>
+
+                  <button type="submit" class="btn btn-primary" style="border:none;cursor:pointer;">
+                    Send Request
+                  </button>
+                </form>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div class="footer-bar">
+          <span>© 2026 Hypertronic. All rights reserved. RUC: 20612293229</span>
+          <span>Infrastructure • Data Center • Automation</span>
+        </div>
+      </footer>
+
+    </div>
+  </main>
+
+  <a href="https://wa.me/51940162098" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 32 32" aria-hidden="true">
+      <path fill="white" d="M19.11 17.29c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.13-.42-2.15-1.35-.8-.71-1.34-1.58-1.5-1.85-.16-.27-.02-.42.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.53-.45-.45-.61-.46h-.52c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.26s.98 2.62 1.11 2.8c.14.18 1.92 2.93 4.65 4.11.65.28 1.15.45 1.55.58.65.2 1.24.17 1.7.1.52-.08 1.6-.65 1.83-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32z"/>
+      <path fill="white" d="M16.03 3.2c-7.08 0-12.82 5.74-12.82 12.82 0 2.27.59 4.48 1.72 6.42L3 29l6.76-1.77a12.77 12.77 0 0 0 6.27 1.61h.01c7.07 0 12.81-5.75 12.81-12.82 0-3.43-1.34-6.66-3.77-9.08A12.73 12.73 0 0 0 16.03 3.2zm0 23.47h-.01a10.6 10.6 0 0 1-5.4-1.48l-.39-.23-4.01 1.05 1.07-3.91-.25-.4a10.64 10.64 0 1 1 8.99 4.97z"/>
+    </svg>
+  </a>
+
+</body>
+</html>
